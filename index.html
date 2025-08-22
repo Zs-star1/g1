@@ -1,0 +1,1266 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>الدرس الأول - لغتي الجميلة - الصف الرابع</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700&family=Amiri:wght@400;700&family=Fredoka+One:wght@400&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Cairo', sans-serif;
+            background: linear-gradient(135deg, #f1f8e9 0%, #dcedc8 25%, #c5e1a5 50%, #aed581 75%, #9ccc65 100%);
+            min-height: 100vh;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        /* علامة مائية */
+        .watermark {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            padding: 8px 16px;
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            color: #33691e;
+            font-size: 12px;
+            font-weight: 600;
+            z-index: 1000;
+            animation: float 3s ease-in-out infinite;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+
+        /* خلفية متحركة */
+        .animated-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            overflow: hidden;
+        }
+
+        .arabic-letter {
+            position: absolute;
+            font-family: 'Amiri', serif;
+            font-size: 2rem;
+            color: rgba(139, 195, 74, 0.15);
+            animation: letter-float 25s infinite linear;
+            font-weight: bold;
+        }
+
+        @keyframes letter-float {
+            0% {
+                transform: translateY(100vh) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 0.15;
+            }
+            90% {
+                opacity: 0.15;
+            }
+            100% {
+                transform: translateY(-100px) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+            background: rgba(255, 255, 255, 0.25);
+            backdrop-filter: blur(20px);
+            padding: 35px;
+            border-radius: 30px;
+            border: 2px solid rgba(255, 255, 255, 0.4);
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+            animation: header-shine 4s ease-in-out infinite;
+        }
+
+        @keyframes header-shine {
+            0%, 100% { transform: rotate(0deg); }
+            50% { transform: rotate(180deg); }
+        }
+
+        .header h1 {
+            color: #1b5e20;
+            font-size: 2.8rem;
+            margin-bottom: 15px;
+            font-family: 'Fredoka One', cursive;
+            text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.1);
+            position: relative;
+            z-index: 2;
+        }
+
+        .header p {
+            color: #2e7d32;
+            font-size: 1.3rem;
+            font-weight: 600;
+            position: relative;
+            z-index: 2;
+        }
+
+        .activities-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        .activity-card {
+            background: rgba(255, 255, 255, 0.3);
+            backdrop-filter: blur(20px);
+            border-radius: 25px;
+            padding: 30px;
+            border: 2px solid rgba(255, 255, 255, 0.5);
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .activity-card:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15);
+            border-color: rgba(139, 195, 74, 0.6);
+        }
+
+        .activity-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+            transition: left 0.6s;
+        }
+
+        .activity-card:hover::before {
+            left: 100%;
+        }
+
+        .activity-title {
+            color: #1b5e20;
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .activity-number {
+            background: linear-gradient(135deg, #8bc34a, #689f38);
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 1.2rem;
+            box-shadow: 0 4px 15px rgba(139, 195, 74, 0.4);
+        }
+
+        .btn {
+            background: linear-gradient(135deg, #8bc34a, #689f38);
+            color: white;
+            border: none;
+            padding: 14px 28px;
+            border-radius: 30px;
+            cursor: pointer;
+            font-size: 1.1rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            margin: 8px;
+            box-shadow: 0 6px 20px rgba(139, 195, 74, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            transition: all 0.3s ease;
+            transform: translate(-50%, -50%);
+        }
+
+        .btn:hover::before {
+            width: 300px;
+            height: 300px;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(139, 195, 74, 0.4);
+            background: linear-gradient(135deg, #689f38, #33691e);
+        }
+
+        .letter-display {
+            font-size: 5rem;
+            color: #2e7d32;
+            text-align: center;
+            margin: 20px 0;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: 'Amiri', serif;
+        }
+
+        .letter-display:hover {
+            transform: scale(1.1);
+            color: #1b5e20;
+        }
+
+        .letters-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+        }
+
+        .letter-card {
+            background: rgba(255, 255, 255, 0.5);
+            padding: 20px;
+            border-radius: 20px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+            position: relative;
+            overflow: hidden;
+            font-family: 'Amiri', serif;
+            font-size: 2rem;
+            font-weight: bold;
+        }
+
+        .letter-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, transparent, rgba(139, 195, 74, 0.1), transparent);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .letter-card:hover::before {
+            opacity: 1;
+        }
+
+        .letter-card:hover {
+            background: rgba(255, 255, 255, 0.7);
+            transform: scale(1.08);
+            border-color: #8bc34a;
+            box-shadow: 0 8px 25px rgba(139, 195, 74, 0.3);
+        }
+
+        .word-display {
+            font-size: 3rem;
+            color: #2e7d32;
+            text-align: center;
+            margin: 20px 0;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: 'Amiri', serif;
+            background: rgba(255, 255, 255, 0.3);
+            padding: 20px;
+            border-radius: 20px;
+            border: 2px solid rgba(255, 255, 255, 0.4);
+        }
+
+        .word-display:hover {
+            transform: scale(1.05);
+            color: #1b5e20;
+            background: rgba(255, 255, 255, 0.5);
+        }
+
+        .quiz-question {
+            background: rgba(255, 255, 255, 0.35);
+            padding: 25px;
+            border-radius: 20px;
+            margin: 20px 0;
+            border: 1px solid rgba(255, 255, 255, 0.4);
+        }
+
+        .quiz-options {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .quiz-option {
+            background: rgba(255, 255, 255, 0.5);
+            padding: 15px;
+            border-radius: 15px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-align: center;
+            border: 2px solid transparent;
+            font-weight: 500;
+            font-size: 1.1rem;
+        }
+
+        .quiz-option:hover {
+            background: rgba(255, 255, 255, 0.7);
+            border-color: #8bc34a;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(139, 195, 74, 0.2);
+        }
+
+        .quiz-option.correct {
+            background: rgba(76, 175, 80, 0.4);
+            border-color: #4caf50;
+            color: #1b5e20;
+            animation: correct-pulse 0.6s ease-out;
+        }
+
+        .quiz-option.wrong {
+            background: rgba(244, 67, 54, 0.3);
+            border-color: #f44336;
+            color: #c62828;
+            animation: wrong-shake 0.6s ease-out;
+        }
+
+        @keyframes correct-pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+
+        @keyframes wrong-shake {
+            0%, 100% { transform: translateX(0); }
+            25% { transform: translateX(-5px); }
+            75% { transform: translateX(5px); }
+        }
+
+        .score-display {
+            background: linear-gradient(135deg, #4caf50, #2e7d32);
+            color: white;
+            padding: 18px;
+            border-radius: 20px;
+            text-align: center;
+            font-size: 1.3rem;
+            font-weight: bold;
+            margin: 20px 0;
+            box-shadow: 0 6px 20px rgba(76, 175, 80, 0.3);
+            animation: score-appear 0.6s ease-out;
+        }
+
+        @keyframes score-appear {
+            0% { 
+                opacity: 0; 
+                transform: translateY(20px) scale(0.8); 
+            }
+            100% { 
+                opacity: 1; 
+                transform: translateY(0) scale(1); 
+            }
+        }
+
+        .input-field {
+            width: 100%;
+            padding: 15px;
+            border: 2px solid rgba(255, 255, 255, 0.5);
+            border-radius: 15px;
+            background: rgba(255, 255, 255, 0.4);
+            font-size: 1.1rem;
+            margin: 15px 0;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+            text-align: center;
+            font-family: 'Amiri', serif;
+        }
+
+        .input-field:focus {
+            outline: none;
+            border-color: #8bc34a;
+            background: rgba(255, 255, 255, 0.6);
+            box-shadow: 0 4px 15px rgba(139, 195, 74, 0.2);
+        }
+
+        /* موجات صوتية محسنة */
+        .sound-waves {
+            display: none;
+            justify-content: center;
+            align-items: center;
+            gap: 4px;
+            margin: 15px 0;
+            padding: 10px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 15px;
+        }
+
+        .sound-waves.active {
+            display: flex;
+        }
+
+        .wave {
+            width: 5px;
+            height: 25px;
+            background: linear-gradient(135deg, #8bc34a, #689f38);
+            border-radius: 3px;
+            animation: wave-animation 1.2s ease-in-out infinite;
+            box-shadow: 0 2px 8px rgba(139, 195, 74, 0.3);
+        }
+
+        .wave:nth-child(2) { animation-delay: 0.1s; }
+        .wave:nth-child(3) { animation-delay: 0.2s; }
+        .wave:nth-child(4) { animation-delay: 0.3s; }
+        .wave:nth-child(5) { animation-delay: 0.4s; }
+        .wave:nth-child(6) { animation-delay: 0.5s; }
+
+        @keyframes wave-animation {
+            0%, 100% { 
+                height: 25px; 
+                background: linear-gradient(135deg, #8bc34a, #689f38);
+            }
+            50% { 
+                height: 50px; 
+                background: linear-gradient(135deg, #689f38, #33691e);
+            }
+        }
+
+        .celebration {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            padding: 50px;
+            border-radius: 25px;
+            text-align: center;
+            z-index: 1000;
+            display: none;
+            box-shadow: 0 25px 80px rgba(0, 0, 0, 0.3);
+            border: 2px solid rgba(139, 195, 74, 0.3);
+        }
+
+        .celebration.show {
+            display: block;
+            animation: celebration-pop 0.6s ease-out;
+        }
+
+        @keyframes celebration-pop {
+            0% { 
+                transform: translate(-50%, -50%) scale(0.3); 
+                opacity: 0; 
+                rotate: -10deg;
+            }
+            50% {
+                transform: translate(-50%, -50%) scale(1.1); 
+                rotate: 5deg;
+            }
+            100% { 
+                transform: translate(-50%, -50%) scale(1); 
+                opacity: 1; 
+                rotate: 0deg;
+            }
+        }
+
+        .drag-item {
+            background: rgba(255, 255, 255, 0.5);
+            padding: 12px 20px;
+            border-radius: 15px;
+            margin: 8px;
+            cursor: grab;
+            display: inline-block;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+            font-size: 1.1rem;
+            font-weight: 600;
+            font-family: 'Amiri', serif;
+        }
+
+        .drag-item:hover {
+            background: rgba(255, 255, 255, 0.7);
+            transform: scale(1.05);
+            border-color: #8bc34a;
+        }
+
+        .drag-item:active {
+            cursor: grabbing;
+        }
+
+        .drop-zone {
+            min-height: 80px;
+            border: 3px dashed rgba(139, 195, 74, 0.5);
+            border-radius: 15px;
+            padding: 20px;
+            margin: 20px 0;
+            text-align: center;
+            background: rgba(255, 255, 255, 0.2);
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.1rem;
+            font-weight: 600;
+        }
+
+        .drop-zone.drag-over {
+            border-color: #8bc34a;
+            background: rgba(139, 195, 74, 0.1);
+            transform: scale(1.02);
+        }
+
+        .story-text {
+            background: rgba(255, 255, 255, 0.4);
+            padding: 25px;
+            border-radius: 20px;
+            margin: 20px 0;
+            font-size: 1.2rem;
+            line-height: 1.8;
+            font-family: 'Amiri', serif;
+            color: #2e7d32;
+            border: 2px solid rgba(255, 255, 255, 0.4);
+        }
+
+        .poem-verse {
+            background: rgba(255, 255, 255, 0.4);
+            padding: 20px;
+            border-radius: 15px;
+            margin: 15px 0;
+            font-size: 1.3rem;
+            line-height: 1.8;
+            font-family: 'Amiri', serif;
+            color: #2e7d32;
+            text-align: center;
+            border: 2px solid rgba(255, 255, 255, 0.4);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .poem-verse:hover {
+            background: rgba(255, 255, 255, 0.6);
+            transform: scale(1.02);
+        }
+
+        .grammar-table {
+            background: rgba(255, 255, 255, 0.4);
+            border-radius: 15px;
+            padding: 20px;
+            margin: 20px 0;
+            overflow-x: auto;
+        }
+
+        .grammar-table table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .grammar-table th,
+        .grammar-table td {
+            padding: 15px;
+            text-align: center;
+            border: 2px solid rgba(139, 195, 74, 0.3);
+            font-size: 1.2rem;
+            font-weight: 600;
+            font-family: 'Amiri', serif;
+        }
+
+        .grammar-table th {
+            background: rgba(139, 195, 74, 0.3);
+            color: #1b5e20;
+        }
+
+        .grammar-table td {
+            background: rgba(255, 255, 255, 0.5);
+            color: #2e7d32;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .grammar-table td:hover {
+            background: rgba(139, 195, 74, 0.2);
+            transform: scale(1.05);
+        }
+
+        @media (max-width: 768px) {
+            .activities-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .header h1 {
+                font-size: 2.2rem;
+            }
+            
+            .activity-card {
+                padding: 25px;
+            }
+
+            .letters-grid {
+                grid-template-columns: repeat(auto-fit, minmax(60px, 1fr));
+            }
+
+            .letter-display {
+                font-size: 4rem;
+            }
+
+            .word-display {
+                font-size: 2.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="animated-bg" id="animatedBg"></div>
+    
+    <div class="watermark">
+        إبراهيم الحجيلي
+    </div>
+
+    <div class="container">
+        <div class="header">
+            <h1>📚 الدرس الأول - لغتي الجميلة 📚</h1>
+            <p>الصف الرابع الابتدائي - العام الدراسي 1447هـ</p>
+            <p style="margin-top: 10px; font-size: 1rem;">الحروف والكلمات والتعبير</p>
+        </div>
+
+        <div class="activities-grid">
+            <!-- النشاط الأول: تعلم الحروف -->
+            <div class="activity-card">
+                <div class="activity-title">
+                    <div class="activity-number">1</div>
+                    تعلم الحروف الهجائية
+                </div>
+                <div class="letters-grid">
+                    <div class="letter-card" onclick="speakLetter('أ', 'ألف')">أ</div>
+                    <div class="letter-card" onclick="speakLetter('ب', 'باء')">ب</div>
+                    <div class="letter-card" onclick="speakLetter('ت', 'تاء')">ت</div>
+                    <div class="letter-card" onclick="speakLetter('ث', 'ثاء')">ث</div>
+                    <div class="letter-card" onclick="speakLetter('ج', 'جيم')">ج</div>
+                    <div class="letter-card" onclick="speakLetter('ح', 'حاء')">ح</div>
+                    <div class="letter-card" onclick="speakLetter('خ', 'خاء')">خ</div>
+                    <div class="letter-card" onclick="speakLetter('د', 'دال')">د</div>
+                </div>
+                <div class="sound-waves" id="soundWaves1">
+                    <div class="wave"></div>
+                    <div class="wave"></div>
+                    <div class="wave"></div>
+                    <div class="wave"></div>
+                    <div class="wave"></div>
+                    <div class="wave"></div>
+                </div>
+                <button class="btn" onclick="speakAllLetters()">🔊 استمع لجميع الحروف</button>
+            </div>
+
+            <!-- النشاط الثاني: تكوين الكلمات -->
+            <div class="activity-card">
+                <div class="activity-title">
+                    <div class="activity-number">2</div>
+                    تكوين الكلمات
+                </div>
+                <div class="word-display" onclick="speakWord('مدرسة')">مدرسة</div>
+                <div class="word-display" onclick="speakWord('كتاب')">كتاب</div>
+                <div class="word-display" onclick="speakWord('قلم')">قلم</div>
+                <div class="sound-waves" id="soundWaves2">
+                    <div class="wave"></div>
+                    <div class="wave"></div>
+                    <div class="wave"></div>
+                    <div class="wave"></div>
+                    <div class="wave"></div>
+                    <div class="wave"></div>
+                </div>
+                <button class="btn" onclick="speakAllWords()">🔊 استمع لجميع الكلمات</button>
+            </div>
+
+            <!-- النشاط الثالث: اختيار الحرف الصحيح -->
+            <div class="activity-card">
+                <div class="activity-title">
+                    <div class="activity-number">3</div>
+                    اختيار الحرف الصحيح
+                </div>
+                <div class="quiz-question">
+                    <div style="text-align: center; margin: 20px 0;">
+                        <div style="font-size: 3rem; font-family: 'Amiri', serif; color: #2e7d32; margin-bottom: 15px;">
+                            _درسة
+                        </div>
+                        <p><strong>ما الحرف المناسب لإكمال الكلمة؟</strong></p>
+                    </div>
+                    <div class="quiz-options">
+                        <div class="quiz-option" onclick="checkLetter(this, true, 'مدرسة')">م</div>
+                        <div class="quiz-option" onclick="checkLetter(this, false, 'مدرسة')">ن</div>
+                        <div class="quiz-option" onclick="checkLetter(this, false, 'مدرسة')">ل</div>
+                        <div class="quiz-option" onclick="checkLetter(this, false, 'مدرسة')">ك</div>
+                    </div>
+                </div>
+                <div id="letterScore" class="score-display" style="display: none;">
+                    🎯 ممتاز! الكلمة الصحيحة هي: مدرسة
+                </div>
+            </div>
+
+            <!-- النشاط الرابع: ترتيب الكلمات -->
+            <div class="activity-card">
+                <div class="activity-title">
+                    <div class="activity-number">4</div>
+                    ترتيب الكلمات لتكوين جملة
+                </div>
+                <p><strong>رتب الكلمات التالية لتكوين جملة مفيدة:</strong></p>
+                <div style="margin: 20px 0; text-align: center;">
+                    <div class="drag-item" draggable="true" ondragstart="drag(event)" id="word1">الطالب</div>
+                    <div class="drag-item" draggable="true" ondragstart="drag(event)" id="word2">يقرأ</div>
+                    <div class="drag-item" draggable="true" ondragstart="drag(event)" id="word3">الكتاب</div>
+                    <div class="drag-item" draggable="true" ondragstart="drag(event)" id="word4">في</div>
+                    <div class="drag-item" draggable="true" ondragstart="drag(event)" id="word5">المكتبة</div>
+                </div>
+                <div class="drop-zone" id="sentenceZone" ondrop="drop(event)" ondragover="allowDrop(event)">
+                    اسحب الكلمات هنا لتكوين الجملة
+                </div>
+                <button class="btn" onclick="checkSentence()">✓ تحقق من الجملة</button>
+                <div id="sentenceResult"></div>
+            </div>
+
+            <!-- النشاط الخامس: القراءة والفهم -->
+            <div class="activity-card">
+                <div class="activity-title">
+                    <div class="activity-number">5</div>
+                    القراءة والفهم
+                </div>
+                <div class="story-text" onclick="speakStory()">
+                    في يوم جميل، ذهب أحمد إلى المدرسة مبكراً. التقى بأصدقائه في الفناء وبدأوا يلعبون معاً. 
+                    عندما دق الجرس، دخل الجميع إلى الفصل واستمعوا للمعلم بانتباه.
+                </div>
+                <div class="sound-waves" id="soundWaves5">
+                    <div class="wave"></div>
+                    <div class="wave"></div>
+                    <div class="wave"></div>
+                    <div class="wave"></div>
+                    <div class="wave"></div>
+                    <div class="wave"></div>
+                </div>
+                <div class="quiz-question">
+                    <p><strong>أين التقى أحمد بأصدقائه؟</strong></p>
+                    <div class="quiz-options">
+                        <div class="quiz-option" onclick="checkReading(this, false)">في الفصل</div>
+                        <div class="quiz-option" onclick="checkReading(this, true)">في الفناء</div>
+                        <div class="quiz-option" onclick="checkReading(this, false)">في المكتبة</div>
+                        <div class="quiz-option" onclick="checkReading(this, false)">في البيت</div>
+                    </div>
+                </div>
+                <div id="readingScore" class="score-display" style="display: none;">
+                    📖 ممتاز! أحمد التقى بأصدقائه في الفناء
+                </div>
+            </div>
+
+            <!-- النشاط السادس: الشعر والأناشيد -->
+            <div class="activity-card">
+                <div class="activity-title">
+                    <div class="activity-number">6</div>
+                    الشعر والأناشيد
+                </div>
+                <div class="poem-verse" onclick="speakPoem('مدرستي بيتي الثاني')">
+                    مدرستي بيتي الثاني
+                </div>
+                <div class="poem-verse" onclick="speakPoem('فيها أتعلم وأنمو')">
+                    فيها أتعلم وأنمو
+                </div>
+                <div class="poem-verse" onclick="speakPoem('مع أصدقائي الأعزاء')">
+                    مع أصدقائي الأعزاء
+                </div>
+                <div class="poem-verse" onclick="speakPoem('نحو المستقبل نسمو')">
+                    نحو المستقبل نسمو
+                </div>
+                <div class="sound-waves" id="soundWaves6">
+                    <div class="wave"></div>
+                    <div class="wave"></div>
+                    <div class="wave"></div>
+                    <div class="wave"></div>
+                    <div class="wave"></div>
+                    <div class="wave"></div>
+                </div>
+                <button class="btn" onclick="speakFullPoem()">🎵 استمع للنشيد كاملاً</button>
+            </div>
+
+            <!-- النشاط السابع: قواعد النحو -->
+            <div class="activity-card">
+                <div class="activity-title">
+                    <div class="activity-number">7</div>
+                    قواعد النحو البسيطة
+                </div>
+                <div class="grammar-table">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>الكلمة</th>
+                                <th>نوعها</th>
+                                <th>المثال</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td onclick="speakGrammar('أحمد اسم')">أحمد</td>
+                                <td onclick="speakGrammar('اسم')">اسم</td>
+                                <td onclick="speakGrammar('أحمد طالب مجتهد')">أحمد طالب مجتهد</td>
+                            </tr>
+                            <tr>
+                                <td onclick="speakGrammar('يقرأ فعل')">يقرأ</td>
+                                <td onclick="speakGrammar('فعل')">فعل</td>
+                                <td onclick="speakGrammar('يقرأ الطالب الكتاب')">يقرأ الطالب الكتاب</td>
+                            </tr>
+                            <tr>
+                                <td onclick="speakGrammar('في حرف جر')">في</td>
+                                <td onclick="speakGrammar('حرف')">حرف</td>
+                                <td onclick="speakGrammar('في المدرسة')">في المدرسة</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="sound-waves" id="soundWaves7">
+                    <div class="wave"></div>
+                    <div class="wave"></div>
+                    <div class="wave"></div>
+                    <div class="wave"></div>
+                    <div class="wave"></div>
+                    <div class="wave"></div>
+                </div>
+            </div>
+
+            <!-- النشاط الثامن: الإملاء -->
+            <div class="activity-card">
+                <div class="activity-title">
+                    <div class="activity-number">8</div>
+                    الإملاء والكتابة
+                </div>
+                <div style="text-align: center; margin: 20px 0;">
+                    <p style="font-size: 1.3rem; color: #2e7d32; margin-bottom: 20px;">
+                        <strong>اكتب الكلمة التي تسمعها:</strong>
+                    </p>
+                    <button class="btn" onclick="playDictationWord()">🔊 استمع للكلمة</button>
+                </div>
+                <input type="text" class="input-field" id="dictationInput" placeholder="اكتب الكلمة هنا...">
+                <button class="btn" onclick="checkDictation()">✓ تحقق من الإملاء</button>
+                <div id="dictationResult"></div>
+                <div class="sound-waves" id="soundWaves8">
+                    <div class="wave"></div>
+                    <div class="wave"></div>
+                    <div class="wave"></div>
+                    <div class="wave"></div>
+                    <div class="wave"></div>
+                    <div class="wave"></div>
+                </div>
+            </div>
+
+            <!-- النشاط التاسع: المرادفات والأضداد -->
+            <div class="activity-card">
+                <div class="activity-title">
+                    <div class="activity-number">9</div>
+                    المرادفات والأضداد
+                </div>
+                <div class="quiz-question">
+                    <div style="text-align: center; margin: 20px 0;">
+                        <div style="font-size: 2.5rem; font-family: 'Amiri', serif; color: #2e7d32; margin-bottom: 15px;">
+                            كبير
+                        </div>
+                        <p><strong>ما ضد كلمة "كبير"؟</strong></p>
+                    </div>
+                    <div class="quiz-options">
+                        <div class="quiz-option" onclick="checkOpposite(this, true)">صغير</div>
+                        <div class="quiz-option" onclick="checkOpposite(this, false)">عظيم</div>
+                        <div class="quiz-option" onclick="checkOpposite(this, false)">ضخم</div>
+                        <div class="quiz-option" onclick="checkOpposite(this, false)">واسع</div>
+                    </div>
+                </div>
+                <div id="oppositeScore" class="score-display" style="display: none;">
+                    🔄 ممتاز! ضد كلمة "كبير" هو "صغير"
+                </div>
+            </div>
+
+            <!-- النشاط العاشر: التعبير الكتابي -->
+            <div class="activity-card">
+                <div class="activity-title">
+                    <div class="activity-number">10</div>
+                    التعبير الكتابي
+                </div>
+                <div style="text-align: center; margin: 20px 0;">
+                    <p style="font-size: 1.3rem; color: #2e7d32; margin-bottom: 20px;">
+                        <strong>اكتب جملة عن مدرستك:</strong>
+                    </p>
+                    <div style="background: rgba(139, 195, 74, 0.2); padding: 20px; border-radius: 15px; font-size: 1.1rem; color: #1b5e20;">
+                        💡 مثال: "مدرستي جميلة ونظيفة"
+                    </div>
+                </div>
+                <textarea class="input-field" id="expressionText" rows="4" placeholder="اكتب جملتك هنا..." style="resize: vertical; min-height: 100px;"></textarea>
+                <button class="btn" onclick="checkExpression()">✓ تحقق من التعبير</button>
+                <button class="btn" onclick="speakExpression()">🔊 استمع لما كتبت</button>
+                <div id="expressionResult"></div>
+                <div class="sound-waves" id="soundWaves10">
+                    <div class="wave"></div>
+                    <div class="wave"></div>
+                    <div class="wave"></div>
+                    <div class="wave"></div>
+                    <div class="wave"></div>
+                    <div class="wave"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- نافذة الاحتفال -->
+    <div class="celebration" id="celebration">
+        <h2 style="color: #4caf50; margin-bottom: 20px;">🎉 مبروك! 🎉</h2>
+        <p style="font-size: 1.3rem; margin-bottom: 25px;">لقد أكملت النشاط بنجاح!</p>
+        <button class="btn" onclick="closeCelebration()">متابعة</button>
+    </div>
+
+    <script>
+        // إنشاء الحروف العربية المتحركة
+        function createArabicLetters() {
+            const animatedBg = document.getElementById('animatedBg');
+            const letters = ['أ', 'ب', 'ت', 'ث', 'ج', 'ح', 'خ', 'د', 'ذ', 'ر', 'ز', 'س', 'ش', 'ص', 'ض', 'ط', 'ظ', 'ع', 'غ', 'ف', 'ق', 'ك', 'ل', 'م', 'ن', 'ه', 'و', 'ي'];
+            
+            for (let i = 0; i < 15; i++) {
+                const letter = document.createElement('div');
+                letter.className = 'arabic-letter';
+                letter.textContent = letters[Math.floor(Math.random() * letters.length)];
+                letter.style.left = Math.random() * 100 + '%';
+                letter.style.animationDelay = Math.random() * 25 + 's';
+                letter.style.animationDuration = (Math.random() * 20 + 20) + 's';
+                animatedBg.appendChild(letter);
+            }
+        }
+
+        // متغيرات للإملاء
+        const dictationWords = ['مدرسة', 'كتاب', 'قلم', 'طالب', 'معلم'];
+        let currentDictationWord = '';
+
+        // أصوات التشجيع
+        const encouragementSounds = [
+            'ممتاز! أحسنت!',
+            'رائع! واصل التقدم!',
+            'مبروك! إجابة صحيحة!',
+            'عظيم! أنت متميز!',
+            'برافو! استمر هكذا!'
+        ];
+
+        // تشغيل الكلام للحروف
+        function speakLetter(letter, name) {
+            if ('speechSynthesis' in window) {
+                showSoundWaves();
+                const utterance = new SpeechSynthesisUtterance(`حرف ${name}`);
+                utterance.lang = 'ar-SA';
+                utterance.rate = 0.8;
+                utterance.pitch = 1.0;
+                utterance.volume = 0.9;
+                utterance.onend = hideSoundWaves;
+                speechSynthesis.speak(utterance);
+            }
+        }
+
+        function speakWord(word) {
+            if ('speechSynthesis' in window) {
+                showSoundWaves();
+                const utterance = new SpeechSynthesisUtterance(word);
+                utterance.lang = 'ar-SA';
+                utterance.rate = 0.8;
+                utterance.onend = hideSoundWaves;
+                speechSynthesis.speak(utterance);
+            }
+        }
+
+        function speakAllLetters() {
+            const letters = ['حرف ألف', 'حرف باء', 'حرف تاء', 'حرف ثاء', 'حرف جيم', 'حرف حاء', 'حرف خاء', 'حرف دال'];
+            speakList(letters);
+        }
+
+        function speakAllWords() {
+            const words = ['مدرسة', 'كتاب', 'قلم'];
+            speakList(words);
+        }
+
+        function speakList(items) {
+            let index = 0;
+            showSoundWaves();
+            
+            function speakNext() {
+                if (index < items.length) {
+                    const utterance = new SpeechSynthesisUtterance(items[index]);
+                    utterance.lang = 'ar-SA';
+                    utterance.rate = 0.8;
+                    utterance.onend = () => {
+                        index++;
+                        setTimeout(speakNext, 1000);
+                    };
+                    speechSynthesis.speak(utterance);
+                } else {
+                    hideSoundWaves();
+                }
+            }
+            speakNext();
+        }
+
+        function speakStory() {
+            const story = 'في يوم جميل، ذهب أحمد إلى المدرسة مبكراً. التقى بأصدقائه في الفناء وبدأوا يلعبون معاً. عندما دق الجرس، دخل الجميع إلى الفصل واستمعوا للمعلم بانتباه.';
+            if ('speechSynthesis' in window) {
+                showSoundWaves();
+                const utterance = new SpeechSynthesisUtterance(story);
+                utterance.lang = 'ar-SA';
+                utterance.rate = 0.7;
+                utterance.onend = hideSoundWaves;
+                speechSynthesis.speak(utterance);
+            }
+        }
+
+        function speakPoem(verse) {
+            if ('speechSynthesis' in window) {
+                showSoundWaves();
+                const utterance = new SpeechSynthesisUtterance(verse);
+                utterance.lang = 'ar-SA';
+                utterance.rate = 0.7;
+                utterance.pitch = 1.1;
+                utterance.onend = hideSoundWaves;
+                speechSynthesis.speak(utterance);
+            }
+        }
+
+        function speakFullPoem() {
+            const poem = ['مدرستي بيتي الثاني', 'فيها أتعلم وأنمو', 'مع أصدقائي الأعزاء', 'نحو المستقبل نسمو'];
+            speakList(poem);
+        }
+
+        function speakGrammar(text) {
+            if ('speechSynthesis' in window) {
+                showSoundWaves();
+                const utterance = new SpeechSynthesisUtterance(text);
+                utterance.lang = 'ar-SA';
+                utterance.rate = 0.8;
+                utterance.onend = hideSoundWaves;
+                speechSynthesis.speak(utterance);
+            }
+        }
+
+        function speakExpression() {
+            const text = document.getElementById('expressionText').value;
+            if (text.trim() && 'speechSynthesis' in window) {
+                showSoundWaves();
+                const utterance = new SpeechSynthesisUtterance(text);
+                utterance.lang = 'ar-SA';
+                utterance.rate = 0.8;
+                utterance.onend = hideSoundWaves;
+                speechSynthesis.speak(utterance);
+            }
+        }
+
+        function playEncouragementSound() {
+            const randomEncouragement = encouragementSounds[Math.floor(Math.random() * encouragementSounds.length)];
+            if ('speechSynthesis' in window) {
+                const utterance = new SpeechSynthesisUtterance(randomEncouragement);
+                utterance.lang = 'ar-SA';
+                utterance.rate = 0.9;
+                utterance.pitch = 1.2;
+                utterance.volume = 1.0;
+                speechSynthesis.speak(utterance);
+            }
+        }
+
+        function showSoundWaves() {
+            const waves = document.querySelectorAll('.sound-waves');
+            waves.forEach(wave => wave.classList.add('active'));
+        }
+
+        function hideSoundWaves() {
+            const waves = document.querySelectorAll('.sound-waves');
+            waves.forEach(wave => wave.classList.remove('active'));
+        }
+
+        // فحص الحرف الصحيح
+        function checkLetter(element, isCorrect, word) {
+            const options = element.parentNode.querySelectorAll('.quiz-option');
+            options.forEach(option => {
+                option.style.pointerEvents = 'none';
+                if (option === element) {
+                    option.classList.add(isCorrect ? 'correct' : 'wrong');
+                } else if (option.textContent === 'م') {
+                    option.classList.add('correct');
+                }
+            });
+            
+            if (isCorrect) {
+                document.getElementById('letterScore').style.display = 'block';
+                playEncouragementSound();
+                setTimeout(showCelebration, 1000);
+            }
+        }
+
+        // السحب والإفلات للجمل
+        let sentenceWords = [];
+
+        function allowDrop(ev) {
+            ev.preventDefault();
+            ev.target.classList.add('drag-over');
+        }
+
+        function drag(ev) {
+            ev.dataTransfer.setData("text", ev.target.id);
+        }
+
+        function drop(ev) {
+            ev.preventDefault();
+            ev.target.classList.remove('drag-over');
+            const data = ev.dataTransfer.getData("text");
+            const draggedElement = document.getElementById(data);
+            ev.target.appendChild(draggedElement);
+            sentenceWords.push(draggedElement.textContent);
+        }
+
+        function checkSentence() {
+            const correctOrder = ['الطالب', 'يقرأ', 'الكتاب', 'في', 'المكتبة'];
+            const result = document.getElementById('sentenceResult');
+            
+            if (JSON.stringify(sentenceWords) === JSON.stringify(correctOrder)) {
+                result.innerHTML = '<div class="score-display">🎯 ممتاز! الجملة صحيحة: الطالب يقرأ الكتاب في المكتبة</div>';
+                playEncouragementSound();
+                setTimeout(showCelebration, 1000);
+            } else {
+                result.innerHTML = '<div style="background: rgba(244, 67, 54, 0.3); color: #d32f2f; padding: 15px; border-radius: 15px; text-align: center; margin-top: 15px;">❌ الترتيب غير صحيح. الجملة الصحيحة: الطالب يقرأ الكتاب في المكتبة</div>';
+                sentenceWords = [];
+            }
+        }
+
+        // فحص القراءة والفهم
+        function checkReading(element, isCorrect) {
+            const options = element.parentNode.querySelectorAll('.quiz-option');
+            options.forEach(option => {
+                option.style.pointerEvents = 'none';
+                if (option === element) {
+                    option.classList.add(isCorrect ? 'correct' : 'wrong');
+                } else if (option.textContent === 'في الفناء') {
+                    option.classList.add('correct');
+                }
+            });
+            
+            if (isCorrect) {
+                document.getElementById('readingScore').style.display = 'block';
+                playEncouragementSound();
+                setTimeout(showCelebration, 1000);
+            }
+        }
+
+        // الإملاء
+        function playDictationWord() {
+            currentDictationWord = dictationWords[Math.floor(Math.random() * dictationWords.length)];
+            if ('speechSynthesis' in window) {
+                showSoundWaves();
+                const utterance = new SpeechSynthesisUtterance(currentDictationWord);
+                utterance.lang = 'ar-SA';
+                utterance.rate = 0.7;
+                utterance.onend = hideSoundWaves;
+                speechSynthesis.speak(utterance);
+            }
+        }
+
+        function checkDictation() {
+            const input = document.getElementById('dictationInput');
+            const result = document.getElementById('dictationResult');
+            const answer = input.value.trim();
+            
+            if (answer === currentDictationWord) {
+                result.innerHTML = '<div class="score-display">✍️ ممتاز! الإملاء صحيح</div>';
+                playEncouragementSound();
+                setTimeout(showCelebration, 1000);
+            } else {
+                result.innerHTML = `<div style="background: rgba(244, 67, 54, 0.3); color: #d32f2f; padding: 15px; border-radius: 15px; text-align: center; margin-top: 15px;">❌ حاول مرة أخرى. الكلمة الصحيحة هي: ${currentDictationWord}</div>`;
+            }
+        }
+
+        // المرادفات والأضداد
+        function checkOpposite(element, isCorrect) {
+            const options = element.parentNode.querySelectorAll('.quiz-option');
+            options.forEach(option => {
+                option.style.pointerEvents = 'none';
+                if (option === element) {
+                    option.classList.add(isCorrect ? 'correct' : 'wrong');
+                } else if (option.textContent === 'صغير') {
+                    option.classList.add('correct');
+                }
+            });
+            
+            if (isCorrect) {
+                document.getElementById('oppositeScore').style.display = 'block';
+                playEncouragementSound();
+                setTimeout(showCelebration, 1000);
+            }
+        }
+
+        // التعبير الكتابي
+        function checkExpression() {
+            const input = document.getElementById('expressionText');
+            const result = document.getElementById('expressionResult');
+            const text = input.value.trim();
+            
+            if (text.length > 10) {
+                result.innerHTML = '<div class="score-display">✍️ ممتاز! تعبير جميل ومفيد</div>';
+                playEncouragementSound();
+                setTimeout(showCelebration, 1000);
+            } else {
+                result.innerHTML = '<div style="background: rgba(255, 193, 7, 0.3); color: #f57c00; padding: 15px; border-radius: 15px; text-align: center; margin-top: 15px;">💡 حاول كتابة جملة أطول وأكثر تفصيلاً</div>';
+            }
+        }
+
+        // الاحتفال
+        function showCelebration() {
+            document.getElementById('celebration').classList.add('show');
+        }
+
+        function closeCelebration() {
+            document.getElementById('celebration').classList.remove('show');
+        }
+
+        // تهيئة الصفحة
+        window.onload = function() {
+            createArabicLetters();
+        };
+    </script>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'97336dc5d6062cf9',t:'MTc1NTg3NjgwOC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
